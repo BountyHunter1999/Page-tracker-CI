@@ -7,5 +7,13 @@ name = "page-tracker"
 version = "1.0.0"
 dependencies = [
     "Flask",
-    "redis"
+    "redis",
+    "python-dotenv"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "pytest-timeout"
 ]
