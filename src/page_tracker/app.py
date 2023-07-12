@@ -22,8 +22,8 @@ def index():
 # for singleton, only one instance of client in memory
 @cache
 def redis():
-    # redis = Redis.from_url("redis://localhost:6379/")
-    return Redis(
-        host=os.environ.get("REDIS_HOST", "localhost"),
-        port=os.environ.get("REDIS_PORT", 6379),
-    )
+    return Redis.from_url(os.environ.get("REDIS_URL", "redis://localhost:6379/"))
+    # return Redis(
+    #     host=os.environ.get("REDIS_HOST", "localhost"),
+    #     port=os.environ.get("REDIS_PORT", 6379),
+    # )
