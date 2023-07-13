@@ -35,3 +35,8 @@
 ## Security Analysis
 
 - `bandit -r src/`: make sure our application is secure before deploying the code to production
+
+## Docker file name and tag
+
+- `git rev-parse --short HEAD` to get the commit hash
+- `docker build -t page-tracker:$(git rev-parse --short HEAD) .`
