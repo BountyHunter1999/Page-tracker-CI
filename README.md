@@ -7,7 +7,7 @@
 **Install dependencies for development purposes**
 
 - `pip install --editable ".[dev]"` OR,
-  - `pip install - ".[dev]"`
+  - `pip install - ".[dev]"`: run from within the web folder
 
 **Run tests**
 
@@ -40,3 +40,8 @@
 
 - `git rev-parse --short HEAD` to get the commit hash
 - `docker build -t page-tracker:$(git rev-parse --short HEAD) .`
+
+## Prod
+
+- `pip install --editable "web/[dev]"`: run from root of the project
+- `pip freeze --exclude-editable > web/constraints.txt`: this will help in creating wheels
