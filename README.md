@@ -45,3 +45,7 @@
 
 - `pip install --editable "web/[dev]"`: run from root of the project
 - `pip freeze --exclude-editable > web/constraints.txt`: this will help in creating wheels
+
+### Test
+
+- `pytest web/test/e2e/ --flask-url http://localhost --redis-url redis://localhost:6379`: local test
