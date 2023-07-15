@@ -7,7 +7,7 @@
 **Install dependencies for development purposes**
 
 - `pip install --editable ".[dev]"` OR,
-  - `pip install - ".[dev]"`
+  - `pip install - ".[dev]"`: run from within the web folder
 
 **Run tests**
 
@@ -35,3 +35,23 @@
 ## Security Analysis
 
 - `bandit -r src/`: make sure our application is secure before deploying the code to production
+
+## Docker file name and tag
+
+- `git rev-parse --short HEAD` to get the commit hash
+- `docker build -t page-tracker:$(git rev-parse --short HEAD) .`
+
+## Prod
+
+- `pip install --editable "web/[dev]"`: run from root of the project
+- `pip freeze --exclude-editable > web/constraints.txt`: this will help in creating wheels
+
+### Test
+
+- `pytest web/test/e2e/ --flask-url http://localhost --redis-url redis://localhost:6379`: local test
+
+**USING PROFILES**
+
+- `docker compose --profile testing up -d`: start service assigned to one or more profiles, pass the list of those profiles using `--profile` flag
+- this will run and exit the test container we can see the output in logs
+  - `docker compose logs test-service`

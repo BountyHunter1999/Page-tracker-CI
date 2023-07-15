@@ -35,7 +35,8 @@ def http_client():
 # module to reuse the same Redis client instance for all within a
 # test module
 @pytest.fixture(scope="module")
-def redis_client():
+def redis_client(redis_url):
     if redis_url:
         return redis.Redis.from_url(redis_url)
     return redis.Redis()
+

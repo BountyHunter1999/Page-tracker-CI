@@ -1,11 +1,8 @@
 import os
 from functools import cache
 
-from dotenv import load_dotenv
 from flask import Flask
 from redis import Redis, RedisError
-
-load_dotenv()
 
 app = Flask(__name__)
 
@@ -24,7 +21,9 @@ def index():
 # for singleton, only one instance of client in memory
 @cache
 def redis():
-    return Redis.from_url(os.environ.get("REDIS_URL", "redis://localhost:6379/"))
+    return Redis.from_url(
+        os.environ.get("REDIS_URL", "redis://localhost:6379/")
+    )  # noqa: E501
     # return Redis(
     #     host=os.environ.get("REDIS_HOST", "localhost"),
     #     port=os.environ.get("REDIS_PORT", 6379),
