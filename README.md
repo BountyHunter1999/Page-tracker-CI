@@ -49,3 +49,9 @@
 ### Test
 
 - `pytest web/test/e2e/ --flask-url http://localhost --redis-url redis://localhost:6379`: local test
+
+**USING PROFILES**
+
+- `docker compose --profile testing up -d`: start service assigned to one or more profiles, pass the list of those profiles using `--profile` flag
+- this will run and exit the test container we can see the output in logs
+  - `docker compose logs test-service`
